@@ -11,8 +11,8 @@ use WireComments\Traits\Commentable;
 
 class Article extends Model
 {
-    use HasFactory;
     use Commentable;
+    use HasFactory;
 
     protected $fillable = [
         'title',
