@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 class Slug extends Field
 {
     protected string $view = 'forms.components.slug';
+
     protected ?int $minLength = null;
+
     protected ?int $maxLength = null;
 
     protected function setUp(): void
@@ -22,26 +24,29 @@ class Slug extends Field
 
     public function getIdAttribute(): string
     {
-        return 'slug-' . Str::slug($this->getLabel());
+        return 'slug-'.Str::slug($this->getLabel());
     }
 
     public function getValue(): string
     {
         $value = parent::getValue();
+
         return Str::slug($value);
     }
 
     public function minLength(int $length): static
     {
         $this->minLength = $length;
-        $this->rule('min:' . $length);
+        $this->rule('min:'.$length);
+
         return $this;
     }
 
     public function maxLength(int $length): static
     {
         $this->maxLength = $length;
-        $this->rule('max:' . $length);
+        $this->rule('max:'.$length);
+
         return $this;
     }
 

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\ArticleStatus;
-use App\Models\Scopes\IsPublishedScope;
 use Awcodes\Curator\Models\Media;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
@@ -20,22 +19,22 @@ use WireComments\Traits\Commentable;
 
 class Article extends Model implements Viewable
 {
-    use HasFactory;
     use Commentable;
-    use SoftDeletes;
+    use HasFactory;
     use HasSEO;
     use InteractsWithViews;
+    use SoftDeletes;
 
     protected $fillable = [
         'title',
         'slug',
         'content',
-        'media_id'
+        'media_id',
     ];
 
     protected $casts = [
         'status' => ArticleStatus::class,
-        'content' => 'array'
+        'content' => 'array',
     ];
 
     public function scopeIsPublished(Builder $builder): Builder

@@ -30,7 +30,7 @@ class ListArticles extends ListRecords
             'draft' => Tab::make('Draft')
                 ->modifyQueryUsing(function ($query) {
                     return $query->where('status', ArticleStatus::DRAFT);
-                })
+                }),
         ];
     }
 }

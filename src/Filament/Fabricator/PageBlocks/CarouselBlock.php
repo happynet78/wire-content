@@ -2,12 +2,9 @@
 
 namespace App\Filament\Fabricator\PageBlocks;
 
-use App\Models\Article;
-use App\Models\Category;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use FilamentTiptapEditor\Enums\TiptapOutput;
 use FilamentTiptapEditor\TiptapEditor;
@@ -27,8 +24,8 @@ class CarouselBlock extends PageBlock
                     ->schema([
                         FileUpload::make('image')->required()
                             ->image()
-                            ->imageEditor()
-                    ])
+                            ->imageEditor(),
+                    ]),
             ]);
     }
 
