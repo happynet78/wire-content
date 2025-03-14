@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Enums\ArticleStatus;
 use App\Filament\Resources\ArticleResource\Pages;
-use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Forms\Components\Slug;
 use App\Models\Article;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -14,13 +13,9 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\SelectColumn;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\Enums\TiptapOutput;
 use FilamentTiptapEditor\TiptapEditor;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use RalphJSmit\Filament\SEO\SEO;
 
 class ArticleResource extends Resource
@@ -51,8 +46,8 @@ class ArticleResource extends Resource
                     ]),
                     Forms\Components\Tabs\Tab::make('Media')->schema([
                         CuratorPicker::make('media_id'),
-                    ])
-                ])
+                    ]),
+                ]),
             ])->columns(1);
     }
 

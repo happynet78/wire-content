@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Forms\Components\Slug;
 use App\Models\Category;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -15,8 +14,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\Enums\TiptapOutput;
 use FilamentTiptapEditor\TiptapEditor;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use RalphJSmit\Filament\SEO\SEO;
 
 class CategoryResource extends Resource
@@ -41,12 +38,12 @@ class CategoryResource extends Resource
                         Forms\Components\ColorPicker::make('background_color'),
                         Forms\Components\Toggle::make('is_tag'),
                         Forms\Components\Select::make('parent_id')->searchable()->relationship('parent', 'title'),
-                        Forms\Components\Hidden::make('user_id')->dehydrateStateUsing(fn ($state) => auth()->id())
+                        Forms\Components\Hidden::make('user_id')->dehydrateStateUsing(fn ($state) => auth()->id()),
                     ]),
                     Forms\Components\Tabs\Tab::make('SEO')->schema([
                         SEO::make(),
-                    ])
-                ])
+                    ]),
+                ]),
             ])->columns(1);
     }
 

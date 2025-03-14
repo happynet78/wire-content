@@ -2,7 +2,6 @@
 
 namespace App\Filament\Fabricator\PageBlocks;
 
-use App\Models\Article;
 use App\Models\Category;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Select;
@@ -35,19 +34,19 @@ class ArticleBlock extends PageBlock
                     ->searchable(),
                 Select::make('sort_by')->required()
                     ->options([
-                    'created_at' => 'Created At',
-                    'updated_at' => 'Updated At',
-                    'popular' => 'Most Popular'
-                ])->searchable(),
+                        'created_at' => 'Created At',
+                        'updated_at' => 'Updated At',
+                        'popular' => 'Most Popular',
+                    ])->searchable(),
                 Select::make('show_load_more')->label('Show Load More')
                     ->options([
                         'true' => 'Yes',
-                        'false' => 'No'
+                        'false' => 'No',
                     ]),
                 TextInput::make('heading')->required()->label('Heading'),
                 TiptapEditor::make('description')
                     ->label('Short Description')
-                    ->output(TiptapOutput::Json)
+                    ->output(TiptapOutput::Json),
             ]);
     }
 
